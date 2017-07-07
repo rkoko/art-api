@@ -34,22 +34,18 @@ function dataReceived(data){
           </div>`)
         }
     })
-    // $("#loadMoreButtonDiv").append(`<button id="loadMore" class="ui button">Load More</button>`)
-    // // nextPage()
   } else {
     $("#results").append("No Results")
   }
 }
 
 function nextPage() {
-  $(document).on('scroll', function(event){
+  $(document).on('scroll', function(){
     console.log("scrolling!")
     if ( window.innerHeight + window.scrollY > $(document).height() - 200 ) {
         console.log("I need to load some more content here…");
         page += 1
-            $("#loadMore").remove()
             getCollection(searchTerms, page)
-            event.preventDefault()
     }
   })
 }
