@@ -23,13 +23,14 @@ function dataReceived(data){
   console.log("hello")
   if (data.artObjects.length > 0) {
     data.artObjects.forEach((artwork) => {
-      debugger
+
       if (artwork.hasImage === true) {
         $("#results").append(`
           <div class="four wide column">
-          <img src="${ artwork.webImage.url}" style="max-width:200px;height:200px"/>
+          <img src="${artwork.webImage.url}" style="max-width:200px;height:200px"/>
           <h3>${artwork.title}</h3>
           <p>${artwork.principalOrFirstMaker}</p>
+          <button onclick="viewArtworkDetails('${artwork.webImage.url}','${artwork.title}','${artwork.principalOrFirstMaker}')">View Details</button>
           </div>`)
         }
     })
@@ -51,6 +52,31 @@ function nextPage() {
             event.preventDefault()
     }
   })
+}
+
+
+function viewArtworkDetails(image, title, artist) {
+  console.log("got here")
+  $('.ui.basic.modal').modal({
+        onHide: function(){
+            console.log('hidden');
+            $('.ui.basic.modal').empty()
+        },
+        onShow: function(){
+            console.log('shown');
+            $('.ui.basic.modal').append(`
+
+        <div class="image content" style="position:relative;">
+         <img src="${image}" class="image" style="height: 600px;margin: 0 auto; vertical-align: middle;">
+         <div class="description">
+           <p><em>${title}</em></p>
+           <p><em>${artist}</em></p>
+         </div>
+       </div>
+
+        `)
+        }
+      }).modal('show');
 }
 
 
