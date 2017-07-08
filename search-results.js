@@ -1,10 +1,9 @@
-class Artwork{
- constructor(){
+class SearchResults{
+  constructor(){
+    this.works = []
+  }
 
- }
-
- render(){
-   return html
- }
-
+  addWork(){
+    this.works.push(work)
+  }
 }

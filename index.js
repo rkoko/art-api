@@ -45,7 +45,7 @@ function nextPage() {
     if ( window.innerHeight + window.scrollY > $(document).height() - 200 ) {
         console.log("I need to load some more content here…");
         page += 1
-            getCollection(searchTerms, page)
+        getCollection(searchTerms, page)
     }
   })
 }
