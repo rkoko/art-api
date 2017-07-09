@@ -22,18 +22,9 @@ function search(){
 function dataReceived(data){
   console.log("hello")
   if (data.artObjects.length > 0) {
-    data.artObjects.forEach((artwork) => {
-
-      if (artwork.hasImage === true) {
-        $("#results").append(`
-          <div class="four wide column">
-          <img src="${artwork.webImage.url}" style="max-width:200px;height:200px"/>
-          <h3>${artwork.title}</h3>
-          <p>${artwork.principalOrFirstMaker}</p>
-          <button onclick="viewArtworkDetails('${artwork.webImage.url}','${artwork.title}','${artwork.principalOrFirstMaker}')">View Details</button>
-          </div>`)
-        }
-    })
+    let newSearch = new Search(data)
+    console.log(newSearch)
+    $('#results').append(newSearch.renderPage())
   } else {
     $("#results").append("No Results")
   }
